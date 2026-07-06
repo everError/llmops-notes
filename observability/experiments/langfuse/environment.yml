@@ -1,0 +1,14 @@
+name: langfuse-lab
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - jupyterlab
+  - ipywidgets
+  - python-dotenv
+  - pip
+  - pip:
+      - langfuse
+      - langchain
+      - langchain-ollama
+      - openai
