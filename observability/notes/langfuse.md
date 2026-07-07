@@ -6,7 +6,9 @@
 
 - **오픈소스 + 셀프호스팅 가능** (MIT 라이선스 코어, docker compose 배포)
 - **프레임워크 중립** — LangChain, LlamaIndex, OpenAI SDK, 순수 Python 모두 지원
-- **OpenTelemetry 기반** (Python SDK v3부터) — OTel 생태계와 호환
+- **OpenTelemetry 기반** (Python SDK v3부터, 현재 v4) — OTel 생태계와 호환
+
+> 버전 주의: **서버(docker image)는 v3, Python SDK는 v4**로 따로 versioning 된다. SDK v4에서 span/generation 생성 API가 `start_as_current_observation(as_type=...)` 하나로 통합되었다 — 웹 예제 중 v3 문법(`start_as_current_span` 등)은 그대로 동작하지 않음.
 
 대안 비교:
 
@@ -56,7 +58,7 @@ Session (선택)                  ← 대화 세션 단위 묶음
 
 1. **프레임워크 통합** — LangChain `CallbackHandler`, LlamaIndex, OpenAI SDK 래퍼. 코드 몇 줄로 체인 전체 자동 트레이스
 2. **`@observe` 데코레이터** — 함수에 붙이면 자동으로 trace/span 생성, 중첩 호출은 부모-자식으로 연결
-3. **Low-level SDK** — `start_as_current_span` / `start_as_current_generation`으로 구조를 직접 설계
+3. **Low-level SDK** — `start_as_current_observation(as_type="span"|"generation"|"tool"|...)`으로 구조를 직접 설계
 
 전송은 **비동기 배치** — SDK가 백그라운드에서 모아 보내므로 앱 지연에 거의 영향 없음. 프로세스 종료 전 `flush()` 필요.
 

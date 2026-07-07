@@ -82,7 +82,7 @@ with tracer.start_as_current_span("process-order") as span:
     ...
 ```
 
-Langfuse SDK의 `start_as_current_span`과 모양이 같은 이유 = 같은 OTel 패턴이다.
+Langfuse SDK의 `start_as_current_observation`과 모양이 같은 이유 = 같은 OTel 패턴이다.
 
 ## 7. 이미 만나본 OTel
 

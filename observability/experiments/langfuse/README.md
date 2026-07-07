@@ -19,9 +19,15 @@ langfuse/
 
 ```bash
 cp .env.example .env
-# .env 의 CHANGEME 값 채우기 (Git Bash 에 openssl 있음)
+# .env 의 CHANGEME 값 채우기
+# Git Bash (openssl 번들 포함):
 openssl rand -base64 32   # SALT, NEXTAUTH_SECRET
 openssl rand -hex 32      # ENCRYPTION_KEY (hex 64자 필수)
+# PowerShell 대안:
+#   $b = New-Object byte[] 32; (New-Object Security.Cryptography.RNGCryptoServiceProvider).GetBytes($b)
+#   [Convert]::ToBase64String($b)                            # base64
+#   -join ($b | ForEach-Object { $_.ToString('x2') })        # hex
+# Python 대안: python -c "import secrets; print(secrets.token_hex(32))"
 ```
 
 `.env` 의 `LANGFUSE_INIT_*` 값은 첫 기동 시 조직/프로젝트/로그인 계정/API 키를 자동 생성한다.

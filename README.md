@@ -2,7 +2,7 @@
 
 LLM 서비스를 **운영(Operations)** 관점에서 학습하고 기록하는 레포지토리입니다.
 
-모델·프레임워크 자체(LangChain, RAG, Agent 등)는 [llm-notes](../llm-notes)에서 다루고,
+모델·프레임워크 자체(LangChain, RAG, Agent 등)는 ai-notes에서 다루고,
 이 레포는 그렇게 만든 LLM 애플리케이션을 **어떻게 띄우고, 관측하고, 평가하고, 운영하는가**에 집중합니다.
 
 ---
